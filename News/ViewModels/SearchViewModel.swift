@@ -26,4 +26,12 @@ class SearchViewModel: ObservableObject {
             }
         }
     }
+    
+    func clearList() {
+        Task {
+            await MainActor.run {
+                listOfNews = []
+            }
+        }
+    }
 }

@@ -17,14 +17,16 @@ struct NewsCard: View {
                 AsyncImage(url: URL(string: imageURL)) { image in
                     image
                         .resizable()
+                        .frame(height: 225)
                 } placeholder: {
-                    Image("defaultNews")
-                        .resizable()
+                    ShimmerView()
+                        .frame(height: 225)
                 }
                 
             } else {
                 Image("defaultNews")
                     .resizable()
+                    .frame(height: 225)
             }
             Text(news.title ?? "")
                 .foregroundStyle(.appText)
@@ -43,7 +45,6 @@ struct NewsCard: View {
         .background(.appBackgroundComponent)
         .multilineTextAlignment(.leading)
         .clipShape(RoundedRectangle(cornerRadius: 25))
-        .frame(height: 350)
         .contentShape(.rect)
         .shadow(color: scheme == .dark ? .clear : .appGray, radius: 10, y: 10)
     }

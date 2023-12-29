@@ -71,8 +71,7 @@ struct NewsDetailScreen: View {
                                 .frame(width: geometry.size.width, height: 300 + (minY > 0 ? minY : 0))
                                 .clipped()
                         } placeholder: {
-                            Image("defaultNews")
-                                .resizable()
+                            ShimmerView()
                                 .scaledToFill()
                                 .frame(width: geometry.size.width, height: 300 + (minY > 0 ? minY : 0))
                                 .clipped()

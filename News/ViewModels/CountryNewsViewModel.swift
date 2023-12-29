@@ -12,7 +12,7 @@ class CountryNewsViewModel: ObservableObject {
     
     private let newsRepository: NewsRepository = NewsRepository()
     
-    @MainActor @Published var listOfNews: [News] = []
+    @MainActor @Published var listOfNews: [News]?
     
     func getInitData() {
         Task {
@@ -27,5 +27,27 @@ class CountryNewsViewModel: ObservableObject {
                 print("Fetching establishments failed with error \(error)")
             }
         }
+    }
+    
+    func refreshData() {
+        Task {
+            do {
+                await MainActor.run {
+                    listOfNews = nil
+                }
+                let list = try await newsRepository.getCountryNews(country: country)
+                await MainActor.run {
+                    listOfNews = list.articles.filter({ news in
+                        news.title != "[Removed]"
+                    })
+                }
+            } catch {
+                print("Fetching establishments failed with error \(error)")
+            }
+        }
+    }
+    
+    func clearList() {
+        listOfNews = []
     }
 }

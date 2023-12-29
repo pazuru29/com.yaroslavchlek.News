@@ -11,6 +11,7 @@
 		A82C3BE22B3D83EB00DB2B4C /* AppSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C3BE12B3D83EB00DB2B4C /* AppSettingsButton.swift */; };
 		A82C3BE42B3D9E3D00DB2B4C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C3BE32B3D9E3D00DB2B4C /* Theme.swift */; };
 		A82C3BE62B3D9EAE00DB2B4C /* ThemeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82C3BE52B3D9EAE00DB2B4C /* ThemeChangeView.swift */; };
+		A83048CA2B3ED37C00C026CE /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83048C92B3ED37C00C026CE /* ShimmerView.swift */; };
 		A836A6A02B3AE79E0055CEBE /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A836A69F2B3AE79D0055CEBE /* APIRouter.swift */; };
 		A836A6A22B3AF0B10055CEBE /* APIRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A836A6A12B3AF0B10055CEBE /* APIRequestDispatcher.swift */; };
 		A836A6A42B3AF2FE0055CEBE /* APIRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A836A6A32B3AF2FE0055CEBE /* APIRequestError.swift */; };
@@ -58,6 +59,7 @@
 		A82C3BE12B3D83EB00DB2B4C /* AppSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsButton.swift; sourceTree = "<group>"; };
 		A82C3BE32B3D9E3D00DB2B4C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A82C3BE52B3D9EAE00DB2B4C /* ThemeChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangeView.swift; sourceTree = "<group>"; };
+		A83048C92B3ED37C00C026CE /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		A836A69F2B3AE79D0055CEBE /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		A836A6A12B3AF0B10055CEBE /* APIRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestDispatcher.swift; sourceTree = "<group>"; };
 		A836A6A32B3AF2FE0055CEBE /* APIRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestError.swift; sourceTree = "<group>"; };
@@ -200,12 +202,12 @@
 		A8FFA34F2B39D9A800DF5FF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A8C03E792B3DF36F006D306A /* CountryView.swift */,
-				A8C03E7B2B3DF5FD006D306A /* CategoryView.swift */,
 				A836A6B32B3B19680055CEBE /* LaunchScreen.storyboard */,
 				A8FFA3522B39D9E200DF5FF1 /* MainView.swift */,
 				A8C03E772B3DE326006D306A /* EditProfileView.swift */,
 				A8A85EE82B3C808800CF6B3E /* NewsDetailScreen.swift */,
+				A8C03E7B2B3DF5FD006D306A /* CategoryView.swift */,
+				A8C03E792B3DF36F006D306A /* CountryView.swift */,
 				A8FFA3572B39E62700DF5FF1 /* Tabs */,
 				A8FFA36F2B3A158700DF5FF1 /* Onboarding */,
 				A8FFA36C2B3A0AD100DF5FF1 /* Components */,
@@ -285,6 +287,7 @@
 				A836A6C22B3B76410055CEBE /* NewsCard.swift */,
 				A82C3BE12B3D83EB00DB2B4C /* AppSettingsButton.swift */,
 				A82C3BE52B3D9EAE00DB2B4C /* ThemeChangeView.swift */,
+				A83048C92B3ED37C00C026CE /* ShimmerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				A836A6C32B3B76410055CEBE /* NewsCard.swift in Sources */,
 				A8FFA35F2B39E6B500DF5FF1 /* CountryNewsView.swift in Sources */,
 				A836A6A42B3AF2FE0055CEBE /* APIRequestError.swift in Sources */,
+				A83048CA2B3ED37C00C026CE /* ShimmerView.swift in Sources */,
 				A8C03E7C2B3DF5FD006D306A /* CategoryView.swift in Sources */,
 				A8FFA3422B39D97400DF5FF1 /* NewsApp.swift in Sources */,
 				A8A85EDC2B3C21E200CF6B3E /* CategorySelector.swift in Sources */,

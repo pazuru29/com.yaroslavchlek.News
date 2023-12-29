@@ -41,10 +41,14 @@ struct SearchView: View {
                 }
             }
             .onChange(of: searchText, { oldValue, newValue in
-                searchPublisher.send(newValue)
+                if newValue.isEmpty {
+                    searchViewModel.listOfNews = []
+                } else {
+                    searchPublisher.send(newValue)
+                }
             })
             .onReceive(
-                searchPublisher.debounce(for: .seconds(1), scheduler: DispatchQueue.main), perform: { text in
+                searchPublisher.debounce(for: .seconds(0.3), scheduler: DispatchQueue.main), perform: { text in
                     print(text)
                     if text.isEmpty {
                         searchViewModel.listOfNews = []
@@ -52,22 +56,8 @@ struct SearchView: View {
                         searchViewModel.getInitData(searchText: text)
                     }
                 })
-            .onSubmit {
-                if searchText.isEmpty {
-                    searchViewModel.listOfNews = []
-                } else {
-                    searchViewModel.getInitData(searchText: searchText)
-                }
-            }
         }
         .navigationTitle("Search news")
         .searchable(text: $searchText)
     }
 }
-
-//#Preview {
-//    NavigationStack {
-//        SearchView()
-//    }
-//    .environmentObject(SearchViewModel())
-//}

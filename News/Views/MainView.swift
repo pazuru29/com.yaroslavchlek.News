@@ -51,6 +51,9 @@ struct MainView: View, KeyboardReadable {
                 NavigationStack {
                     SettingsView()
                 }
+                .environmentObject(userNewsViewModel)
+                .environmentObject(countryNewsViewModel)
+                .environmentObject(searchViewModel)
                 .setUpTab(.settings)
             }
             if(!isKeyboardVisible) {

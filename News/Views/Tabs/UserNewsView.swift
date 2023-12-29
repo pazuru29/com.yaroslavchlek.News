@@ -33,14 +33,19 @@ struct UserNewsView: View {
                 Color.appBackground
                     .frame(height: 8)
                     .id(topItemId)
-                ForEach(userNewsViewModel.mapOfNews[categories[currentIndex]] ?? []) { news in
-                    NavigationLink(destination: {
-                        NewsDetailScreen(news: news)
-                    }, label: {
-                        NewsCard(scheme: scheme, news: news)
-                            .padding(.horizontal, 16)
-                            .padding(.bottom, 16)
-                    })
+                if userNewsViewModel.mapOfNews[categories[currentIndex]] == nil {
+                    ProgressView()
+                        .padding(.top, 72)
+                } else {
+                    ForEach(userNewsViewModel.mapOfNews[categories[currentIndex]] ?? []) { news in
+                        NavigationLink(destination: {
+                            NewsDetailScreen(news: news)
+                        }, label: {
+                            NewsCard(scheme: scheme, news: news)
+                                .padding(.horizontal, 16)
+                                .padding(.bottom, 16)
+                        })
+                    }
                 }
             }
             .onChange(of: shouldScrollToTop, {
@@ -49,6 +54,9 @@ struct UserNewsView: View {
                 }
                 shouldScrollToTop = false
             })
+            .refreshable {
+                userNewsViewModel.refreshData(indexOfCategory: currentIndex)
+            }
         }
         .navigationTitle("News by category")
         .onAppear() {

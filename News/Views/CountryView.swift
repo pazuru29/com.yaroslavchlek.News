@@ -12,6 +12,10 @@ struct CountryView: View {
     @Environment(\.colorScheme) private var scheme
     @AppConfiguration(\.country) var country
     
+    @EnvironmentObject var countryNewsViewModel: CountryNewsViewModel
+    @EnvironmentObject var userNewsViewModel: UserNewsViewModel
+    @EnvironmentObject var searchViewModel: SearchViewModel
+    
     @State var selectedCountry: Country?
     
     var body: some View {
@@ -40,7 +44,13 @@ struct CountryView: View {
                 VStack {
                     Spacer()
                     Button("Save") {
-                        country = selectedCountry!
+                        if country != selectedCountry! {
+                            userNewsViewModel.clearList()
+                            countryNewsViewModel.clearList()
+                            searchViewModel.clearList()
+                            
+                            country = selectedCountry!
+                        }
                         presentationMode.wrappedValue.dismiss()
                     }
                     .buttonStyle(MainButtonStyle())

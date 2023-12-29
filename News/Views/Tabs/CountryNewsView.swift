@@ -23,14 +23,19 @@ struct CountryNewsView: View {
                     Color.clear
                         .id(topItemId)
                         .frame(height: 8)
-                    ForEach(countryNewsViewModel.listOfNews) { news in
-                        return NavigationLink(destination: {
-                            NewsDetailScreen(news: news)
-                        }, label: {
-                            NewsCard(scheme: scheme, news: news)
-                                .padding(.horizontal, 16)
-                                .padding(.bottom, 16)
-                        })
+                    if countryNewsViewModel.listOfNews == nil {
+                        ProgressView()
+                            .padding(.top, 72)
+                    } else {
+                        ForEach(countryNewsViewModel.listOfNews ?? []) { news in
+                            return NavigationLink(destination: {
+                                NewsDetailScreen(news: news)
+                            }, label: {
+                                NewsCard(scheme: scheme, news: news)
+                                    .padding(.horizontal, 16)
+                                    .padding(.bottom, 16)
+                            })
+                        }
                     }
                 }
                 .onChange(of: shouldScrollToTop, {
@@ -39,9 +44,12 @@ struct CountryNewsView: View {
                     }
                     shouldScrollToTop = false
                 })
+                .refreshable {
+                    countryNewsViewModel.refreshData()
+                }
             }
             .onAppear() {
-                if countryNewsViewModel.listOfNews.isEmpty {
+                if countryNewsViewModel.listOfNews == nil {
                     countryNewsViewModel.getInitData()
                 }
             }

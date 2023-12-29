@@ -30,4 +30,23 @@ class UserNewsViewModel: ObservableObject {
             }
         }
     }
+    
+    func refreshData(indexOfCategory: Int) {
+        let currentCategory = categories.isEmpty ? .business : categories[indexOfCategory]
+        mapOfNews[currentCategory] = nil
+        Task {
+            do {
+                let list = try await newsRepository.getUserNews(country: country, category: currentCategory)
+                mapOfNews[currentCategory] = list.articles.filter({ news in
+                    news.title != "[Removed]"
+                })
+            } catch {
+                print("Fetching establishments failed with error \(error)")
+            }
+        }
+    }
+    
+    func clearList() {
+        mapOfNews = [:]
+    }
 }
