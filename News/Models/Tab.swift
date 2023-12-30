@@ -39,8 +39,3 @@ enum Tab: String, CaseIterable {
         }
     }
 }
-
-struct AnimatedTab: Identifiable {
-    var id: UUID = .init()
-    var tab: Tab
-}

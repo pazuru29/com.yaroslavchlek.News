@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct NewsDetailScreen: View {
     @Environment(\.presentationMode) var presentationMode
@@ -64,7 +65,7 @@ struct NewsDetailScreen: View {
             ZStack(alignment: .topLeading) {
                 VStack {
                     if let imageURL = news.urlToImage {
-                        AsyncImage(url: URL(string: imageURL)) { image in
+                        CachedAsyncImage(url: URL(string: imageURL)) { image in
                             image
                                 .resizable()
                                 .scaledToFill()

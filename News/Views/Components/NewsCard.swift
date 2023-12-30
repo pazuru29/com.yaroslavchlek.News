@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct NewsCard: View {
     var scheme: ColorScheme
@@ -14,7 +15,7 @@ struct NewsCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             if let imageURL = news.urlToImage {
-                AsyncImage(url: URL(string: imageURL)) { image in
+                CachedAsyncImage(url: URL(string: imageURL)) { image in
                     image
                         .resizable()
                         .frame(height: 225)
