@@ -55,7 +55,7 @@ struct UserNewsView: View {
                 shouldScrollToTop = false
             })
             .refreshable {
-                userNewsViewModel.refreshData(indexOfCategory: currentIndex)
+                userNewsViewModel.getInitData(indexOfCategory: currentIndex)
             }
         }
         .navigationTitle("News by category")

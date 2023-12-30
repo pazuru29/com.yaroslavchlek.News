@@ -45,7 +45,7 @@ struct CountryNewsView: View {
                     shouldScrollToTop = false
                 })
                 .refreshable {
-                    countryNewsViewModel.refreshData()
+                    countryNewsViewModel.getInitData()
                 }
             }
             .onAppear() {

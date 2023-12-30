@@ -29,24 +29,6 @@ class CountryNewsViewModel: ObservableObject {
         }
     }
     
-    func refreshData() {
-        Task {
-            do {
-                await MainActor.run {
-                    listOfNews = nil
-                }
-                let list = try await newsRepository.getCountryNews(country: country)
-                await MainActor.run {
-                    listOfNews = list.articles.filter({ news in
-                        news.title != "[Removed]"
-                    })
-                }
-            } catch {
-                print("Fetching establishments failed with error \(error)")
-            }
-        }
-    }
-    
     func clearList() {
         listOfNews = []
     }
